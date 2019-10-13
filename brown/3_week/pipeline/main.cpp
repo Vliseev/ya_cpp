@@ -205,7 +205,6 @@ void TestSanity() {
 
 int main() {
     TestRunner tr;
-    //  TestSanity();
     RUN_TEST(tr, TestSanity);
     return 0;
 }
