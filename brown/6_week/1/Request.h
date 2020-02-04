@@ -46,12 +46,12 @@ struct AddBusRequest : public ModifyRequest {
     AddBusRequest() : ModifyRequest(Type::BUS_ADD){};
 
     void ParseFrom(std::string_view input) override {
-
         //        date_from = Date::FromString(ReadToken(input));
         //        date_to = Date::FromString(ReadToken(input));
         //        percent = ConvertToInt(input);
     }
 
-    std::vector<std::string> route;
-    size_t id;
+    std::vector<std::string> route{};
+    size_t id{};
+    bool is_circuar{};
 };
