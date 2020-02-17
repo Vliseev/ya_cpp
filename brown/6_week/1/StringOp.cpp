@@ -8,8 +8,8 @@ std::string_view ReadToken(std::string_view& s, std::string_view delimiter) {
     s = rhs;
     return lhs;
 }
-std::pair<std::string_view, std::optional<std::string_view>>
-SplitTwoStrict(std::string_view s, std::string_view delimiter) {
+std::pair<std::string_view, std::optional<std::string_view>> SplitTwoStrict(
+    std::string_view s, std::string_view delimiter) {
     const size_t pos = s.find(delimiter);
     if (pos == s.npos) {
         return {s, std::nullopt};
@@ -17,8 +17,8 @@ SplitTwoStrict(std::string_view s, std::string_view delimiter) {
         return {s.substr(0, pos), s.substr(pos + delimiter.length())};
     }
 }
-std::pair<std::string_view, std::string_view>
-SplitTwo(std::string_view s, std::string_view delimiter) {
+std::pair<std::string_view, std::string_view> SplitTwo(
+    std::string_view s, std::string_view delimiter) {
     const auto [lhs, rhs_opt] = SplitTwoStrict(s, delimiter);
     return {lhs, rhs_opt.value_or("")};
 }
@@ -36,5 +36,6 @@ std::string_view Strip(std::string_view s, char symbol) {
     while (*it == symbol && it != s.rend())
         it++;
 
-    return std::string_view(0, s.size() - std::distance(s.rbegin(), it));
+    auto dist = s.size() - std::distance(s.rbegin(), it);
+    return s.substr(0, dist);
 }

@@ -8,15 +8,14 @@
 
 struct Bus {
  private:
-    size_t id_{};
+    std::string id_{};
     std::vector<ShPtrStop> rout_{};
 
  public:
-    Bus(size_t id, const std::vector<ShPtrStop>& rout) : id_(id), rout_(rout) {}
-
+    Bus(std::string id, const std::vector<ShPtrStop>& rout)
+        : id_(id), rout_(rout) {}
     Bus() = default;
-
-    size_t GetId() const {
+    std::string GetId() const {
         return id_;
     }
     const std::vector<ShPtrStop>& GetRout() const {
